@@ -5,13 +5,71 @@ The current release includes our trained hashing model, all datasets, and the ex
 # AutoHash: Visualization and Data
 
 ## Overview
-This repository provides essential supplementary materials for the AutoHash project, including:
+This repository provides essential supplementary materials for the **AutoHash** project, including:
 
-- **Visualization Notebook:** The Jupyter notebook (`visualization.pynb`) used to generate all figures presented in our study.
-- **Training Dataset:** Full training dataset available for reproducing the experiments.
+- **Image Embedding Extraction**: A script that processes images using the **DINOv2** model and extracts embeddings.
+- **Image Augmentation**: A script to generate augmented versions of images for dataset expansion.
+- **DBLP Paper Embeddings**: A pipeline to extract research paper metadata from **DBLP** and generate dense embeddings.
+- **Merging Embeddings**: A utility to merge multiple `.npy` embedding files into a single dataset.
+- **Visualization Notebook**: The Jupyter notebook (`visualization.pynb`) used to generate all figures presented in our study.
 
+---
+
+## Code Overview
+
+### 1. Image Embedding Extraction (`image_embedding_extraction.py`)
+This script extracts feature embeddings from images using **DINOv2**. It processes a dataset of images, applies the **AutoImageProcessor**, and saves the embeddings in `.npy` format.
+
+#### Usage
+```bash
+python image_embedding_extraction.py
+```
+
+Uses DINOv2 (facebook/dinov2-with-registers-giant) for feature extraction.
+Supports multi-GPU execution for efficient processing.
+Utilizes PyTorch DataLoader for batch processing.
+Saves extracted embeddings (.npy) and corresponding image paths (.txt).
+### 2. Image Augmentation (image_augmentation.py)
+This script applies multiple augmentation techniques to expand the dataset, using PIL and OpenCV.
+
+Augmentation Methods
+Flipping: Random horizontal & vertical flips.
+Rotation: Random rotations between -40 to +40 degrees.
+Brightness/Contrast Adjustment: Random intensity changes.
+Gaussian Noise: Randomly adds noise to simulate real-world distortions.
+#### Usage
+```bash
+python image_augmentation.py
+```
+ 
+Generates multiple augmented versions of each image.
+Saves augmented images in a structured folder hierarchy.
+### 3. DBLP Paper Embedding Extraction (dblp_paper_embedding.py)
+This script extracts metadata from DBLP XML, formats them into structured text, and converts them into dense embeddings using BGE-M3.
+
+#### Usage
+```bash
+python dblp_paper_embedding.py
+```
+ 
+Parses DBLP dataset (dblp.xml) for research paper metadata (title, authors, year, venue, etc.).
+Encodes the extracted text into dense embeddings using BGE-M3.
+Saves embeddings in .npy format in chunked storage for large datasets.
+### 4. Merging Embeddings (merge_embeddings.py)
+This script merges multiple .npy files containing embeddings into a single file for efficient storage and retrieval.
+
+#### Usage
+```bash
+python merge_embeddings.py
+```
+ 
+Concatenates multiple .npy embedding files into a single large NumPy array.
+Handles large-scale datasets efficiently.
+Supports automatic detection of .npy files in a directory.
 ## Contents
-- [`visualization.pynb`](visualization.pynb): Jupyter notebook with step-by-step procedures for reproducing all figures from our research.
+visualization.pynb: Jupyter notebook with step-by-step procedures for reproducing all figures from our research.
+
+
 ## Datasets
 
 ### AutoHash Training Dataset
@@ -31,6 +89,7 @@ AutoHash also utilizes the **DBLP dataset** for evaluations. The dataset is avai
 - Download using the command:
   ```bash
   wget https://dblp.uni-trier.de/xml/dblp.xml.gz
+  ```
 ## How to Use
 1. **Clone the repository:**
    ```bash
