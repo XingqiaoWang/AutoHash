@@ -12,8 +12,25 @@ This repository provides essential supplementary materials for the AutoHash proj
 
 ## Contents
 - [`visualization.pynb`](visualization.pynb): Jupyter notebook with step-by-step procedures for reproducing all figures from our research.
-- **Dataset:** [Download Training Dataset](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
+## Datasets
 
+### AutoHash Training Dataset
+- [Download Training Dataset](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
+
+### Additional Datasets
+The following datasets were used to benchmark AutoHash’s performance:
+
+- **iNaturalist 2018**: [Download](https://ml-inat-competition-datasets.s3.amazonaws.com/2018/train_val2018.tar.gz)
+- **Google Landmark Dataset v2 (GLDv2)**: [Download](https://github.com/cvdfoundation/google-landmark)
+- **Rp2k Dataset**: [Download](https://blob-nips2020-rp2k-dataset.obs.cn-east-3.myhuaweicloud.com/rp2k_dataset.zip)
+
+### DBLP Dataset
+AutoHash also utilizes the **DBLP dataset** for evaluations. The dataset is available in XML format and can be downloaded as follows:
+
+- **DBLP XML Dataset**: [Download](https://dblp.uni-trier.de/xml/dblp.xml.gz)
+- Download using the command:
+  ```bash
+  wget https://dblp.uni-trier.de/xml/dblp.xml.gz
 ## How to Use
 1. **Clone the repository:**
    ```bash
