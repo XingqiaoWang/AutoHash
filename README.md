@@ -3,7 +3,21 @@
 ## Notes
 The current release includes our trained hashing model, all datasets, and the experiment script necessary to reproduce our results. However, the full source code is part of a commercialization effort and is currently the subject of a pending patent application. Due to intellectual property considerations, we are unable to publicly release the source code at this time. We are committed to making all supplementary materials, including the source code, publicly available as soon as commercialization and patent protection are granted.
 # AutoHash: Running the Indexing Experimen
-Step 1: Generate Experiment Plan (First Run)
+### Prerequisites###:
+Before you begin, ensure you have the following installed:
+
+Python 3.7+ (Recommended)
+Required Python Libraries: Install all necessary Python packages by running these commands in your Colab notebook or terminal:
+``` bash
+!pip install numpy
+!pip install torch # If you are using torch
+!pip install simsimd # If you are using simsimd
+!pip install faiss-cpu   # For CPU support, or use !pip install faiss-gpu if you have a compatible GPU runtime in Colab
+!pip install matplotlib
+```
+
+Step 1: Modify your dataset path in Config files 
+Step 2: Generate Experiment Plan (First Run)
 
 Open your terminal or command prompt, navigate to the image_experiment/ directory.
 
@@ -11,7 +25,13 @@ Execute the main script to generate the experiment plan:
 ```bash
 python image_index_evaluation.py
 ```
-
+Under the experiment plan get the vector_counts for your dataset, then modify the vector_counts in index_evaluation.json to match. 
+Step 3: Run Experiment Evaluation (Second Run)
+In your terminal, from the image_experiment/ directory, execute image_index_evaluation.py again:
+``` bash
+python image_index_evaluation.py
+```
+(optional) Continue to visualization process
 # AutoHash: Visualization and Data
 
 ## Overview
