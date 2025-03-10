@@ -2,6 +2,16 @@
 
 ## Notes
 The current release includes our trained hashing model, all datasets, and the experiment script necessary to reproduce our results. However, the full source code is part of a commercialization effort and is currently the subject of a pending patent application. Due to intellectual property considerations, we are unable to publicly release the source code at this time. We are committed to making all supplementary materials, including the source code, publicly available as soon as commercialization and patent protection are granted.
+# AutoHash: Running the Indexing Experimen
+Step 1: Generate Experiment Plan (First Run)
+
+Open your terminal or command prompt, navigate to the image_experiment/ directory.
+
+Execute the main script to generate the experiment plan:
+```bash
+python image_index_evaluation.py
+```
+
 # AutoHash: Visualization and Data
 
 ## Overview
