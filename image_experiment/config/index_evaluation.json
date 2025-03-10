@@ -1,0 +1,10 @@
+{
+  "experiment_name": "indexing_evaluation",
+  "training": {
+    "data_path": [
+      "./image_dataset/embeddings_optimized_test_full.npy"
+    ],
+    "experiment_path": "./experiment"
+  },
+  "vector_counts": [10000]
+}
