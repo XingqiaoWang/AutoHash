@@ -1,48 +1,79 @@
 # AutoHash: Autoencoder-Based Compact Hashing for Scalable k-NN Search in Vector Databases
 
-## Notes
-The current release includes our trained hashing model, all datasets, and the experiment script necessary to reproduce our results. However, the full source code is part of a commercialization effort and is currently the subject of a pending patent application. Due to intellectual property considerations, we are unable to publicly release the source code at this time. We are committed to making all supplementary materials, including the source code, publicly available as soon as commercialization and patent protection are granted.
-# AutoHash: Running the Indexing Experimen
-### Prerequisites###:
+# AutoHash: Running the Indexing Experiment
+
+## Prerequisites
+
 Before you begin, ensure you have the following installed:
 
-Python 3.7+ (Recommended)
+- **Python 3.7+** (Recommended)
+
 Required Python Libraries: Install all necessary Python packages by running these commands in your Colab notebook or terminal:
 ``` bash
-!pip install numpy
-!pip install torch # If you are using torch
-!pip install simsimd # If you are using simsimd
-!pip install faiss-cpu   # For CPU support, or use !pip install faiss-gpu if you have a compatible GPU runtime in Colab
-!pip install matplotlib
+pip install numpy  
+pip install torch        # If you are using torch  
+pip install simsimd      # If you are using simsimd  
+pip install faiss-cpu    # For CPU support, or use pip install faiss-gpu if you have a compatible GPU runtime  
+pip install matplotlib
 ```
-
-Step 1: Modify your dataset path in Config files 
-Step 2: Generate Experiment Plan (First Run)
-
-Open your terminal or command prompt, navigate to the image_experiment/ directory.
+## Step 1: Modify Your Dataset Path in Config Files
+Prepare datasets and modify the Dataset path in the Config Files.
+## Step 2: Generate Experiment Plan (First Run)
+Open your terminal or command prompt, navigate to the **image_experiment/** directory.
 
 Execute the main script to generate the experiment plan:
 ```bash
 python image_index_evaluation.py
 ```
-Under the experiment plan get the vector_counts for your dataset, then modify the vector_counts in index_evaluation.json to match. 
-Step 3: Run Experiment Evaluation (Second Run)
-In your terminal, from the image_experiment/ directory, execute image_index_evaluation.py again:
-``` bash
+Under the experiment plan, get the **vector_counts** for your dataset, then modify the **vector_counts** in **index_evaluation.json** to match.
+
+## Step 3: Run Experiment Evaluation (Second Run)
+
+In your terminal, from the **image_experiment/** directory, execute **image_index_evaluation.py** again:
+```bash
 python image_index_evaluation.py
 ```
-(optional) Continue to visualization process
-# AutoHash: Visualization and Data
+(Optional) Continue to a visualization process.
 
-## Overview
+# Datasets
+
+### AutoHash Training Dataset
+This is a partial dataset's link:
+- [Download Partial Dataset from Google Drive](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
+
+### Additional Datasets
+The following datasets were used to benchmark AutoHash’s performance:
+
+- **iNaturalist 2018**: [Download](https://ml-inat-competition-datasets.s3.amazonaws.com/2018/train_val2018.tar.gz)
+- **Google Landmark Dataset v2 (GLDv2)**: [Download](https://github.com/cvdfoundation/google-landmark)
+- **Rp2k Dataset**: [Download](https://blob-nips2020-rp2k-dataset.obs.cn-east-3.myhuaweicloud.com/rp2k_dataset.zip)
+
+### DBLP Dataset
+AutoHash also utilizes the **DBLP dataset** for evaluations. The dataset is available in XML format and can be downloaded as follows:
+
+- **DBLP XML Dataset**: [Download](https://dblp.uni-trier.de/xml/dblp.xml.gz)
+- Download using the command:
+  ```bash
+  wget https://dblp.uni-trier.de/xml/dblp.xml.gz
+  ```
+## How to Use
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-link>
+   ```
+2. **Download the training dataset:**
+   - [Training dataset link](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
+   - Place the dataset within the cloned repository directory for easy access.
+
+
+
+## Data process Overview
 This repository provides essential supplementary materials for the **AutoHash** project, including:
 
 - **Image Embedding Extraction**: A script that processes images using the **DINOv2** model and extracts embeddings.
 - **Image Augmentation**: A script to generate augmented versions of images for dataset expansion.
 - **DBLP Paper Embeddings**: A pipeline to extract research paper metadata from **DBLP** and generate dense embeddings.
 - **Merging Embeddings**: A utility to merge multiple `.npy` embedding files into a single dataset.
-- **Visualization Notebook**: The Jupyter notebook (`visualization.pynb`) used to generate all figures presented in our study.
-
 ---
 
 ## Code Overview
@@ -96,51 +127,18 @@ python merge_embeddings.py
 Concatenates multiple .npy embedding files into a single large NumPy array.
 Handles large-scale datasets efficiently.
 Supports automatic detection of .npy files in a directory.
-## Contents
-visualization.pynb: Jupyter notebook with step-by-step procedures for reproducing all figures from our research.
 
-
-## Datasets
-
-### AutoHash Training Dataset
-- [Download Training Dataset](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
-
-### Additional Datasets
-The following datasets were used to benchmark AutoHash’s performance:
-
-- **iNaturalist 2018**: [Download](https://ml-inat-competition-datasets.s3.amazonaws.com/2018/train_val2018.tar.gz)
-- **Google Landmark Dataset v2 (GLDv2)**: [Download](https://github.com/cvdfoundation/google-landmark)
-- **Rp2k Dataset**: [Download](https://blob-nips2020-rp2k-dataset.obs.cn-east-3.myhuaweicloud.com/rp2k_dataset.zip)
-
-### DBLP Dataset
-AutoHash also utilizes the **DBLP dataset** for evaluations. The dataset is available in XML format and can be downloaded as follows:
-
-- **DBLP XML Dataset**: [Download](https://dblp.uni-trier.de/xml/dblp.xml.gz)
-- Download using the command:
-  ```bash
-  wget https://dblp.uni-trier.de/xml/dblp.xml.gz
-  ```
-## How to Use
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-link>
-   ```
-2. **Download the training dataset:**
-   - [Training dataset link](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
-   - Place the dataset within the cloned repository directory for easy access.
-
-3. **Run the Visualization Notebook:**
+# AutoHash: Visualization
+- **Visualization Notebook**: The Jupyter notebook (`visualization.pynb`) used to generate all figures presented in our study.
+**Run the Visualization Notebook:**
    - Open `visualization.pynb` in Jupyter Notebook or JupyterLab.
    ```bash
    jupyter notebook visualization.pynb
    ```
    - Follow notebook instructions to generate figures.
 
-
-- The full source code for AutoHash remains pending due to patent and commercialization efforts. It will be made publicly available upon completion of these processes.
-
 ## Citation
-If you utilize the dataset or visualization notebook, please cite our work as follows:
+If you utilize AutoHash, please cite our work.
 
  
 
