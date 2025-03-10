@@ -33,6 +33,8 @@ In your terminal, from the **image_experiment/** directory, execute **image_inde
 ```bash
 python image_index_evaluation.py
 ```
+The result will be generated and saved to the experiment plan folder. 
+
 (Optional) Continue to a visualization process.
 
 # Datasets
