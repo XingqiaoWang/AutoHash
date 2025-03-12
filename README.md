@@ -40,7 +40,70 @@ The result will be generated and saved to the experiment plan folder.
 (Optional) Continue to a visualization process.
 
 # Datasets
+## AutoHash Dataset - S3 Download Guide
 
+This repository provides step-by-step instructions on how to download datasets stored in an AWS S3 bucket.
+
+## 📌 Dataset Information
+The datasets are hosted in an **AWS S3 bucket** and include embeddings for various datasets such as Google Landmark, iNaturalist, RP2K, and DBLP.
+
+### **📍 Dataset Paths**
+| Dataset | S3 Path |
+|---------|---------|
+| Google Landmark 2 (Augmented - Index) | `s3://autohashdataset/dataset/image/google landmark 2 augmentation/embeddings_optimized_index_augmented_full.npy` |
+| Google Landmark 2 (Augmented - Test) | `s3://autohashdataset/dataset/image/google landmark 2 augmentation/embeddings_optimized_test_augmented_full.npy` |
+| Google Landmark 2 (Full Embeddings) | `s3://autohashdataset/dataset/image/google landmark 2/embeddings_optimized_full.npy` |
+| Google Landmark 2 (Index) | `s3://autohashdataset/dataset/image/google landmark 2/embeddings_optimized_index_full.npy` |
+| Google Landmark 2 (Test) | `s3://autohashdataset/dataset/image/google landmark 2/embeddings_optimized_test_full.npy` |
+| iNaturalist (Train/Val 2018) | `s3://autohashdataset/dataset/image/iNaturalist/train_val_2018.npy` |
+| RP2K | `s3://autohashdataset/dataset/image/rp2k/rp2k.npy` |
+| DBLP Embeddings | `s3://autohashdataset/dataset/dblp/dblp_embeddings.npy` |
+
+---
+
+## 🚀 **Step-by-Step Guide to Download the Dataset**
+### **1️⃣ Install AWS CLI**
+First, install the **AWS Command Line Interface (CLI)** if you haven’t already.
+
+- **Windows**: Download and install from [AWS CLI Installer](https://aws.amazon.com/cli/)
+- **Mac (Homebrew)**:  
+  ```sh
+  brew install awscli
+  ```
+  - **Linux**
+   ```sh
+  sudo apt install awscli  # Debian/Ubuntu
+  sudo yum install awscli  # CentOS/RHEL
+  ```
+### **2️⃣ Get AWS Access Credentials**
+To access the dataset, you need AWS credentials (Access Key and Secret Key). Follow these steps:
+
+Log in to AWS Console:[https://aws.amazon.com/cli/](https://console.aws.amazon.com/iam/) 
+Navigate to IAM → Users → Select your user.
+Click Security Credentials → Create Access Key.
+Copy your Access Key ID and Secret Access Key (you won’t see the secret key again after closing the window).
+### **3️⃣ Configure AWS CLI**
+```sh
+aws configure
+```
+You will be prompted to enter:
+```sh
+AWS Access Key ID [None]: YOUR_ACCESS_KEY_ID
+AWS Secret Access Key [None]: YOUR_SECRET_ACCESS_KEY
+Default region name [None]: us-east-2
+Default output format [None]: 
+```
+### **4️⃣ Download the Dataset**
+Use the following command to download a dataset file:
+```sh
+aws s3 cp "s3://autohashdataset/dataset/image/google landmark 2/embeddings_optimized_full.npy" .
+```
+To download all datasets, run:
+```sh
+aws s3 cp --recursive s3://autohashdataset/dataset/ .
+```
+
+## AutoHash  Sub-Dataset - Google Drive Download
 ### AutoHash Training Dataset
 This is a partial dataset's link:
 - [Download Partial Dataset from Google Drive](https://drive.google.com/drive/folders/1p09OFWosYdZy9dIpE-syiH2hhCaN2h7V?usp=sharing)
